@@ -83,23 +83,64 @@ A modern, responsive admin portal built with Node.js, Express, and Tailwind CSS.
 2. **Register Page**: http://localhost:3000/register
 3. **Dashboard**: http://localhost:3000/admin/dashboard (requires authentication)
 
-# Admin Portal
 
-A modern admin portal built with HTML, CSS, and JavaScript.
+## 🚀 Features
+
+- 🌈 Modern Tailwind-based UI
+- 🔐 Secure JWT Authentication
+- 📊 Dashboard Analytics
+- 👥 Customer Management
+- 📦 Product CRUD with Categories
+- 🛎️ Real-time Toast Notifications
+- 📱 Mobile-Responsive Design
+
+---
 
 ## 🖼️ Screenshots
 
-### 🔐 Login Page
+### 🔐 Login Page  
 ![Login Screenshot](assets/login-screenshot.png)
 
-### 📝 Register Page
+### 📝 Register Page  
 ![Register Screenshot](assets/register-screenshot.png)
 
-### 🔐 Dashboard Page
-![Login Screenshot](assets/dashboard-screensho.png)
+### 📊 Dashboard  
+![Dashboard Screenshot](assets/dashboard-screenshot.png)
 
-### 📝 Register Page
-![Register Screenshot](assets/categories.png)
+### 🗂️ Category Management  
+![Categories Screenshot](assets/categories.png)
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend**: HTML5, Tailwind CSS, Vanilla JavaScript  
+- **Backend**: Node.js, Express.js  
+- **Database**: MySQL  
+- **Authentication**: JWT, bcryptjs  
+- **Security**: Helmet, CORS, Rate Limiting
+
+---
+
+## 📦 Prerequisites
+
+- Node.js (v14 or later)
+- MySQL Server
+- npm or yarn
+
+---
+
+## ⚙️ Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/leviuswafula52/admin-portal.git
+cd admin-portal
+
+# Install dependencies
+npm install
+
+# Create a .env file in the root directory
 
 ## 🚀 Features
 - Admin authentication
