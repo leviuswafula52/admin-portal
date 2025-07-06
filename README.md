@@ -83,6 +83,30 @@ A modern, responsive admin portal built with Node.js, Express, and Tailwind CSS.
 2. **Register Page**: http://localhost:3000/register
 3. **Dashboard**: http://localhost:3000/admin/dashboard (requires authentication)
 
+# Admin Portal
+
+A modern admin portal built with HTML, CSS, and JavaScript.
+
+## 🖼️ Screenshots
+
+### 🔐 Login Page
+![Login Screenshot](assets/login-screenshot.png)
+
+### 📝 Register Page
+![Register Screenshot](assets/register-screenshot.png)
+
+### 🔐 Dashboard Page
+![Login Screenshot](assets/dashboard-screensho.png)
+
+### 📝 Register Page
+![Register Screenshot](assets/categories.png)
+
+## 🚀 Features
+- Admin authentication
+- Dynamic notifications
+- Responsive glassmorphism UI
+
+
 ### Creating Your First Admin Account
 
 1. Navigate to the register page
