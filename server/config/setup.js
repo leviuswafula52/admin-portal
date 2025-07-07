@@ -85,6 +85,49 @@ async function setupDatabase() {
       )
     `);
 
+    // Create orders table
+    console.log('Creating orders table...');
+    await connection.execute(`
+      CREATE TABLE IF NOT EXISTS orders (
+        order_id INT AUTO_INCREMENT PRIMARY KEY,
+        customer_id INT,
+        total_amount DECIMAL(10,2) NOT NULL,
+        status VARCHAR(50) DEFAULT 'Pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE SET NULL
+      )
+    `);
+
+    // Create order_items table
+    console.log('Creating order_items table...');
+    await connection.execute(`
+      CREATE TABLE IF NOT EXISTS order_items (
+        order_item_id INT AUTO_INCREMENT PRIMARY KEY,
+        order_id INT,
+        product_id INT,
+        quantity INT NOT NULL,
+        price DECIMAL(10,2) NOT NULL,
+        FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+        FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE SET NULL
+      )
+    `);
+
+    // Create installments table
+    console.log('Creating installments table...');
+    await connection.execute(`
+      CREATE TABLE IF NOT EXISTS installments (
+        installment_id INT AUTO_INCREMENT PRIMARY KEY,
+        order_id INT,
+        customer_id INT,
+        amount DECIMAL(10,2) NOT NULL,
+        due_date DATE NOT NULL,
+        status VARCHAR(20) DEFAULT 'Pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+        FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE SET NULL
+      )
+    `);
+
     // Insert default categories if they don't exist
     console.log('Checking for default categories...');
     const [existingCategories] = await connection.execute('SELECT COUNT(*) as count FROM categories');

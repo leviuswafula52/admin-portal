@@ -47,9 +47,10 @@
     }
   </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 min-h-screen">
+  <div class="flex min-h-screen">
   <!-- Sidebar -->
-  <div id="sidebar" class="sidebar fixed left-0 top-0 h-full w-64 bg-white shadow-lg z-30">
+    <div id="sidebar" class="sidebar w-64 bg-white shadow-lg z-30 overflow-y-auto">
     <!-- Sidebar Header -->
     <div class="p-6 border-b border-gray-200">
       <div class="flex items-center space-x-3">
@@ -82,9 +83,9 @@
 
     <!-- Navigation -->
     <nav class="p-4">
-      <ul class="space-y-2">
+        <ul class="space-y-2 list-none pl-0">
         <li>
-          <a href="#dashboard" class="nav-link active flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+          <a href="#dashboard" class="nav-link active flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors no-underline">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6H8V5z"></path>
@@ -93,7 +94,7 @@
           </a>
         </li>
         <li>
-          <a href="#customers" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+          <a href="#customers" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors no-underline">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
             </svg>
@@ -101,15 +102,31 @@
           </a>
         </li>
         <li>
-          <a href="#products" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+          <button id="productsMenuBtn" type="button" class="nav-link flex items-center w-full space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none justify-between">
+            <span class="flex items-center gap-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+              </svg>
+              <span class="sidebar-text">Products</span>
+            </span>
+            <svg id="productsMenuChevron" class="w-4 h-4 ml-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
-            <span class="sidebar-text">Products</span>
-          </a>
+          </button>
+          <ul id="productsSubMenu" class="ml-8 mt-1 space-y-1 hidden">
+            <li>
+              <a href="#products" id="sidebarListProducts" class="block px-2 py-1.5 rounded-md text-gray-700 hover:bg-gray-200 text-sm no-underline">List Products</a>
+            </li>
+            <li>
+              <a href="#" id="sidebarAddProduct" class="block px-2 py-1.5 rounded-md text-gray-700 hover:bg-gray-200 text-sm no-underline">Add Product</a>
+            </li>
+            <li>
+              <a href="#" id="sidebarUpdatePrice" class="block px-2 py-1.5 rounded-md text-gray-700 hover:bg-gray-200 text-sm no-underline">Update Price</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="#categories" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+          <a href="#categories" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors no-underline">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
             </svg>
@@ -117,7 +134,7 @@
           </a>
         </li>
         <li>
-          <a href="#orders" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+          <a href="#orders" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors no-underline">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
             </svg>
@@ -125,7 +142,7 @@
           </a>
         </li>
         <li>
-          <a href="#settings" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+          <a href="#settings" class="nav-link flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors no-underline">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -136,21 +153,29 @@
       </ul>
     </nav>
 
+    <!-- Add after the navigation list, before the logout button -->
+    <div class="p-4">
+      <button id="previewPrintReportsBtn" class="flex items-center gap-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-3 py-1.5 rounded-full text-sm shadow-sm transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9V2h12v7M6 18v4h12v-4M6 14h12M6 10h12"/></svg>
+        Print Report
+      </button>
+    </div>
+
     <!-- Logout -->
     <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
-      <button id="logoutBtn" class="w-full flex items-center space-x-3 p-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors">
+        <button id="logoutBtn" class="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm text-red-600 bg-red-50 hover:bg-red-100 transition-colors font-semibold">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
         </svg>
-        <span class="sidebar-text">Logout</span>
+          Logout
       </button>
     </div>
   </div>
 
   <!-- Main Content -->
-  <div id="mainContent" class="main-content ml-64 min-h-screen">
+    <div id="mainContent" class="main-content flex-1 flex flex-col bg-gray-50 px-0 py-0">
     <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+      <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 sticky top-0 z-20">
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
           <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100">
@@ -172,9 +197,9 @@
         </div>
       </div>
     </header>
-
+      <div id="welcomeMessage" class="px-6 py-4 text-lg font-semibold text-gray-800"></div>
     <!-- Content Area -->
-    <div class="p-6">
+      <div class="flex-1 p-6 overflow-y-auto">
       <!-- Dashboard View -->
       <div id="dashboardView" class="view active">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -290,11 +315,16 @@
       <div id="productsView" class="view hidden">
         <div class="bg-white rounded-xl shadow-sm border border-gray-200">
           <div class="p-6 border-b border-gray-200">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div class="flex gap-2">
+                <button id="listProductsBtn" class="bg-blue-100 text-blue-700 font-semibold px-3 py-1.5 rounded-full text-sm shadow-sm transition-colors">List Products</button>
+                <button id="addProductBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-3 py-1.5 rounded-full text-sm shadow-sm transition-colors flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                  Add Product
+                </button>
+                <button id="updatePriceBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-3 py-1.5 rounded-full text-sm shadow-sm transition-colors">Update Price</button>
+              </div>
               <h2 class="text-xl font-semibold text-gray-900">Product Management</h2>
-              <button id="addProductBtn" class="bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-                Add Product
-              </button>
             </div>
           </div>
           <div class="p-6">
@@ -319,15 +349,109 @@
         </div>
       </div>
 
-      <!-- Other views can be added here -->
+        <!-- Categories View -->
+        <div id="categoriesView" class="view hidden">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+            <div class="p-6 border-b border-gray-200">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <h2 class="text-xl font-semibold text-gray-900">Category Management</h2>
+                <button id="addCategoryBtn" class="flex items-center gap-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-3 py-1.5 rounded-md text-sm shadow-sm transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead>
+                    <tr class="border-b border-gray-200">
+                      <th class="text-left py-3 px-2 sm:px-4 font-medium text-gray-700 text-sm">ID</th>
+                      <th class="text-left py-3 px-2 sm:px-4 font-medium text-gray-700 text-sm">Name</th>
+                      <th class="text-left py-3 px-2 sm:px-4 font-medium text-gray-700 text-sm hidden md:table-cell">Description</th>
+                      <th class="text-left py-3 px-2 sm:px-4 font-medium text-gray-700 text-sm">Products</th>
+                      <th class="text-left py-3 px-2 sm:px-4 font-medium text-gray-700 text-sm">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="categoriesTableBody">
+                    <!-- Categories will be loaded here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders View -->
+        <div id="ordersView" class="view hidden">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+            <div class="p-6 border-b border-gray-200">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-semibold text-gray-900">Order Management</h2>
+                <button id="issueProductBtn" class="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1.5 rounded-full text-sm shadow-sm transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                  Issue Product
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead>
+                    <tr class="border-b border-gray-200">
+                      <th class="text-left py-3 px-4 font-medium text-gray-700">Order ID</th>
+                      <th class="text-left py-3 px-4 font-medium text-gray-700">Customer</th>
+                      <th class="text-left py-3 px-4 font-medium text-gray-700">Total</th>
+                      <th class="text-left py-3 px-4 font-medium text-gray-700">Status</th>
+                      <th class="text-left py-3 px-4 font-medium text-gray-700">Date</th>
+                      <th class="text-left py-3 px-4 font-medium text-gray-700">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ordersTableBody">
+                    <!-- Orders will be loaded here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="settingsView" class="view hidden">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 max-w-lg mx-auto mt-8">
+            <div class="p-6 border-b border-gray-200">
+              <h2 class="text-xl font-semibold text-gray-900">Settings</h2>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">Update your admin settings below.</p>
+              <form id="settingsForm">
+                <div class="mb-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Admin Name</label>
+                  <input type="text" id="settingsAdminName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent" placeholder="Admin Name">
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <input type="email" id="settingsAdminEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent" placeholder="admin@example.com">
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Change Password</label>
+                  <input type="password" id="settingsAdminPassword" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent" placeholder="New Password">
+                </div>
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2 rounded-full text-base shadow-lg transition-colors">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <footer class="w-full bg-gray-100 text-gray-500 text-center py-3 text-sm mt-auto">Powered by shulepress</footer>
 
   <!-- Modals -->
   <!-- Add Customer Modal -->
   <div id="addCustomerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
     <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="bg-white rounded-xl shadow-xl max-w-md w-full">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-y-auto max-h-screen">
         <div class="p-6 border-b border-gray-200">
           <div class="flex items-center justify-between">
             <h3 class="text-lg font-semibold text-gray-900">Add New Customer</h3>
@@ -375,7 +499,7 @@
   <!-- Add Product Modal -->
   <div id="addProductModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
     <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="bg-white rounded-xl shadow-xl max-w-md w-full">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-y-auto max-h-screen">
         <div class="p-6 border-b border-gray-200">
           <div class="flex items-center justify-between">
             <h3 class="text-lg font-semibold text-gray-900">Add New Product</h3>
@@ -418,6 +542,252 @@
             </button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Category Modal -->
+  <div id="addCategoryModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">Add New Category</h3>
+            <button class="close-modal text-blue-400 hover:text-blue-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <form id="categoryForm" class="p-6 space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Category Name</label>
+            <input type="text" id="categoryName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <textarea id="categoryDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"></textarea>
+          </div>
+          <div class="flex space-x-3 pt-4">
+            <button type="submit" class="flex-1 bg-secondary hover:bg-secondary/90 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+              Save Category
+            </button>
+            <button type="button" class="close-modal flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Category Modal -->
+  <div id="editCategoryModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">Edit Category</h3>
+            <button class="close-modal text-gray-400 hover:text-gray-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <form id="editCategoryForm" class="p-6 space-y-4">
+          <input type="hidden" id="editCategoryId">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Category Name</label>
+            <input type="text" id="editCategoryName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <textarea id="editCategoryDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"></textarea>
+          </div>
+          <div class="flex space-x-3 pt-4">
+            <button type="submit" class="flex-1 bg-secondary hover:bg-secondary/90 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+              Update Category
+            </button>
+            <button type="button" class="close-modal flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div id="editProductModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">Edit Product</h3>
+            <button class="close-modal text-gray-400 hover:text-gray-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <form id="editProductForm" class="p-6 space-y-4">
+          <input type="hidden" id="editProductId">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Product Name</label>
+            <input type="text" id="editProductName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <textarea id="editProductDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+            <select id="editProductCategory" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+              <option value="">Select Category</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Price</label>
+            <input type="number" id="editProductPrice" step="0.01" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Stock Quantity</label>
+            <input type="number" id="editProductStock" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div class="flex space-x-3 pt-4">
+            <button type="submit" class="flex-1 flex items-center justify-center gap-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-md text-sm shadow-sm transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Save
+            </button>
+            <button type="button" class="close-modal flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Issue Product Modal -->
+  <div id="issueProductModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">Issue Product</h3>
+            <button class="close-modal text-gray-400 hover:text-gray-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <form id="issueProductForm" class="p-6 space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Customer</label>
+            <select id="issueCustomer" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"></select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Product</label>
+            <select id="issueProduct" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"></select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+            <input type="number" id="issueQuantity" min="1" value="1" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Payment Mode</label>
+            <div class="flex items-center gap-4">
+              <label class="flex items-center gap-1">
+                <input type="radio" name="issuePaymentMode" value="cash" checked class="accent-emerald-500"> Cash
+              </label>
+              <label class="flex items-center gap-1">
+                <input type="radio" name="issuePaymentMode" value="installments" class="accent-emerald-500"> Installments
+              </label>
+            </div>
+          </div>
+          <div id="installmentFields" class="hidden">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Number of Installments</label>
+              <input type="number" id="issueNumInstallments" min="2" value="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">First Due Date</label>
+              <input type="date" id="issueFirstDueDate" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+            </div>
+          </div>
+          <div class="flex space-x-3 pt-4">
+            <button type="submit" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-md text-sm shadow-sm transition-colors">Submit</button>
+            <button type="button" class="close-modal flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Price Modal -->
+  <div id="updatePriceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-y-auto max-h-screen">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">Update Product Price</h3>
+            <button class="close-modal text-gray-400 hover:text-gray-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <form id="updatePriceForm" class="p-6 space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Product</label>
+            <select id="updatePriceProduct" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"></select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">New Price (KSH)</label>
+            <input type="number" id="updatePriceValue" min="0" step="0.01" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+          </div>
+          <div class="flex space-x-3 pt-4">
+            <button type="submit" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-full text-sm shadow-sm transition-colors">Update</button>
+            <button type="button" class="close-modal flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report Preview Modal -->
+  <div id="reportPreviewModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-2">
+      <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-y-auto max-h-[90vh]">
+        <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900">Report Preview</h3>
+          <button class="close-modal text-gray-400 hover:text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-col gap-3 p-4">
+          <div class="flex gap-2 items-center">
+            <label class="text-sm text-gray-700">From</label>
+            <input type="date" id="startDate" class="border border-gray-300 rounded px-2 py-1 text-sm">
+            <label class="text-sm text-gray-700">To</label>
+            <input type="date" id="endDate" class="border border-gray-300 rounded px-2 py-1 text-sm">
+            <button id="filterReportBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-semibold">Filter</button>
+          </div>
+          <div id="reportContent" class="bg-gray-100 rounded p-3 min-h-[120px]">
+            <p class="text-gray-700">Select a date range and click Filter to preview the report.</p>
+          </div>
+          <div class="flex justify-end gap-3">
+            <button id="printReportBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-full shadow-sm transition-colors">Print</button>
+            <button type="button" class="close-modal bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

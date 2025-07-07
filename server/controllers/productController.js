@@ -110,3 +110,20 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).json({ message: 'Error deleting product' });
   }
 };
+
+exports.updateProductPrice = async (req, res) => {
+  try {
+    const { price } = req.body;
+    if (isNaN(price) || parseFloat(price) <= 0) {
+      return res.status(400).json({ message: 'Price must be a positive number' });
+    }
+    await db.execute(
+      'UPDATE products SET price = ? WHERE product_id = ?',
+      [price, req.params.id]
+    );
+    res.json({ message: 'Product price updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error updating product price' });
+  }
+};

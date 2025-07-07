@@ -2,9 +2,13 @@ const db = require('../config/db');
 
 exports.getAllCategories = async (req, res) => {
   try {
-    const [categories] = await db.execute(
-      'SELECT * FROM categories ORDER BY name'
-    );
+    const [categories] = await db.execute(`
+      SELECT c.*, COUNT(p.product_id) as products_count 
+      FROM categories c 
+      LEFT JOIN products p ON c.category_id = p.category_id 
+      GROUP BY c.category_id 
+      ORDER BY c.name
+    `);
     res.json(categories);
   } catch (error) {
     console.error(error);
