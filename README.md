@@ -82,6 +82,8 @@ A modern, responsive admin portal built with Node.js, Express, and Tailwind CSS.
 1. **Login Page**: http://localhost:3000/login
 2. **Register Page**: http://localhost:3000/register
 3. **Dashboard**: http://localhost:3000/admin/dashboard (requires authentication)
+4. **Admin Username**: admin@admin.com
+2. **Admin password**: password
 
 
 ## 🚀 Features
